@@ -36,6 +36,7 @@ class TrainnerController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         
         if($request->hasFile('avatar')){
             $file = $request->file('avatar');
@@ -47,6 +48,7 @@ class TrainnerController extends Controller
         $trainer = new Trainer();
         $trainer->name = $request -> input('name');
         $trainer->avatar = $name;
+        // $trainer->slug = "cambia_nombre";
         $trainer->save();//guarda el valor del input de entrada
         return 'Saved';
         
@@ -61,7 +63,7 @@ class TrainnerController extends Controller
     public function show(Trainer $trainer)
     {
         // $trainer = Trainer::where('slug','=',$slug)->firstOrFail();//lanza una exception si no encuentra el modelo a buscar
-        // $trainer = Trainer::find($id); permite buscar por el id
+        // $trainer = Trainer::find($id); //permite buscar por el id
         return view('trainers.show', compact('trainer'));
     }
 
